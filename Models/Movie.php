@@ -3,7 +3,7 @@
     public $title;
     public $category;
     public $year;
-    public function __construct(string $title, array $category, int $year ){
+    function __construct(string $title, array $category, string $year ){
         $this -> title = $title;
         $this -> category = $category;
         $this -> year = $year;

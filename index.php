@@ -14,9 +14,7 @@ Facciamo attenzione all’organizzazione del codice, suddividendolo in appositi 
 - organizzando il layout dividendo la struttura ed i contenuti in file e parziali dedicati. -->
 <?php
 require_once ("./Models/Movie.php");
-require_once ("./DB.php");
-
-    
+require_once ("./DB.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +25,9 @@ require_once ("./DB.php");
     <title>Document</title>
 </head>
 <body>
+    <?php
+    include('./Layout/header.php')
+    ?>
     <h1>Movies</h1>
     <table>
         <thead>
@@ -37,22 +38,17 @@ require_once ("./DB.php");
             </tr>
         </thead>
         <tbody>
-            <?php foreach($movies as $movie){
+            <?php foreach($_SESSION['movies'] as $movie){
             ?>
             <tr>
-                <td>
-                    <?=$movie->title?>
-                </td>
+                <td><?=$movie->title?></td>
                 <td>
                     <?php 
                     foreach($movie->category as $cat){
                         echo $cat ."<br>";
-                    };
-                    ?>
+                    };?>
                 </td>
-                <td>
-                    <?=$movie->year?>
-                </td>
+                <td><?=$movie->year?></td>
             </tr>
             <?php
             }
