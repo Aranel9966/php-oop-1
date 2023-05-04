@@ -13,22 +13,24 @@ Facciamo attenzione all’organizzazione del codice, suddividendolo in appositi 
 - mettendo ciascuna classe nel proprio file e magari raggruppare tutte le classi in una cartella dedicata che possiamo chiamare Models/
 - organizzando il layout dividendo la struttura ed i contenuti in file e parziali dedicati. -->
 <?php
-require_once ("./Models/Movie.php");
-require_once ("./DB.php"); 
+require_once("./Models/Movie.php");
+require_once("./DB.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <?php
-    include('./Layout/header.php')
+    include('./Views/partials/header.php')
     ?>
-    <h1>Movies</h1>
+    <h2>Movies</h2>
     <table>
         <thead>
             <tr>
@@ -38,22 +40,20 @@ require_once ("./DB.php");
             </tr>
         </thead>
         <tbody>
-            <?php foreach($_SESSION['movies'] as $movie){
+            <?php foreach ($_SESSION['movies'] as $movie) {
             ?>
-            <tr>
-                <td><?=$movie->title?></td>
-                <td>
-                    <?php 
-                    foreach($movie->category as $cat){
-                        echo $cat ."<br>";
-                    };?>
-                </td>
-                <td><?=$movie->year?></td>
-            </tr>
+                <tr>
+                    <td><?= $movie->title ?></td>
+                    <td>
+                        <?= $movie->getCategory() ?>
+                    </td>
+                    <td><?= $movie->year ?></td>
+                </tr>
             <?php
             }
             ?>
         </tbody>
     </table>
 </body>
+
 </html>
